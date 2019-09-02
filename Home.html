@@ -2,22 +2,35 @@
 <head>
 <title>weather forecasting
 </title>
+<link rel="stylesheet" type="text/css" href="form.css">
 <style>
+	html {
+    height: 100vh;
+    
+}    
+
+     body { position:absolute; top:0; bottom:0; right:0; left:0; }
+
 	*{
 	padding:0px;
-	margin:0px;
+	margin:0px;	
 	}
 
 	div.topnav{
 		   background-color:#46484a;
 		   overflow:hidden;
 		   height:50px;
+		   position: fixed;
+		   width: 100%;
+		   z-index: 2;
+	
 	
 	}
 	
 	div.topnav a{
 		color:#ffffff;
 		float:right;
+		display: block;
 		text-align:center;
 		text-decoration:none;
 		padding:15px;
@@ -41,7 +54,7 @@
 	}
 	div.data{
 	position:relative;
-	width:50%;
+	width:80%;
 	height:5%;
 	top:-70%;
 	margin-left:25%;
@@ -57,27 +70,40 @@
 	height:40%;
 	border-top-left-radius:20px;
 	border-bottom-left-radius:20px;
-	margin-left:25%;
-	background-color:#5d5f63;
+	margin-left:15%;
+	background-color:#333131;
 	position:relative;
 	top:-65%;
 	}
 	.mon,.wed,.fri,.sun{
 	width:8%;
 	height:40%;
-	background-color:#77797b;;	
+	background-color:#5d5f63;	
 	position:relative;
-	
-	clear:none;
 	display:block;
+	margin:0px;
+
 	
 	}
-</style>
+	.tue,.thur,.sat{
+	width:8%;
+	height:40%;
+	background-color:#333131;	
+	position:relative;
+	display:block;
+	margin:0%;
+	padding:0px;
+	
+	}
+	
+}
 </style>
 </head>
 <body>
 <div class="topnav">
 	<a href="#">Contact</a>
+	<a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</a>
+	<a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SignUp</a>
 	<a href="#">Photos</a>
 	<a href="#">News</a>
 	<a href="#">Home</a>	
@@ -86,19 +112,92 @@
 </div>
 <div class="section2">
 </div>
-<div class="data">
-<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:5px;float:right">
+
+<div class="data" style="width: 600px">
+<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:2px;float:right">
 </div>
 <div class="data1">
 </div>
-<div class="mon" style="margin-left:40%;"></div>
-<div class="tue" ></div>
-<div class="wed" style="margin-left:50%;"></div>
-<div class="thur"></div>
-<div class="fri" style="margin-left:60%;"></div>
-<div class="sat"></div>
-<div class="sun" style="margin-left:70%;"></div>
+<div class="mon" style="margin-left:30%; top:-105%"></div>
+<div class="tue" style="margin-left:38%; top:-145%"></div>
+<div class="wed" style="margin-left:46%;top:-185%"></div>
+<div class="thur" style="margin-left:54%;top:-225%"></div>
+<div class="fri" style="margin-left:62%; top:-265%"></div>
+<div class="sat" style="margin-left:70%; top:-305%"></div>
+<div class="sun" style="margin-left:78%; top:-345%; border-bottom-right-radius:20px;border-top-right-radius: 20px;"></div>
 
+<!--Login-->
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="avataar.png" alt="Avatar" class="avatar" style="height: 40%; width: 25%;">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+        
+      <button type="submit">Login</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
+
+<!--Sign up-->
+<div id="id02" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="avataar.png" alt="Avatar" class="avatar" style="height: 40%; width: 25%;">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+       <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Re-Enter Password" name="psw" required>
+        
+      <button type="submit">SignUp</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
 
 </body>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+var modal = document.getElementById('id02');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 </html>
