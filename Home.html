@@ -1,7 +1,15 @@
 <html>
 <head>
+		<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>weather forecasting
 </title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+		<script src="script.js"></script>
 <link rel="stylesheet" type="text/css" href="form.css">
 <style>
 	html {
@@ -9,7 +17,10 @@
     
 }    
 
-     body { position:absolute; top:0; bottom:0; right:0; left:0; }
+     body{
+     	font-family: sans-serif;
+     	font-size: 120%;
+     }
 
 	*{
 	padding:0px;
@@ -54,10 +65,10 @@
 	}
 	div.data{
 	position:relative;
-	width:80%;
-	height:5%;
+	width:70%;
+	height:7%;
 	top:-70%;
-	margin-left:25%;
+	margin-left:15%;
 	z-index:1;
 	border-width:3px;
 	background-color:#383434;
@@ -65,20 +76,24 @@
 	border-style:solid;
 	border-radius:25px;
 	}
-	.data1{
-	width:15%;
+	
+	.mon{
+	width:25%;
 	height:40%;
+	padding-left: 8px;
+	color:white;
 	border-top-left-radius:20px;
 	border-bottom-left-radius:20px;
-	margin-left:15%;
 	background-color:#333131;
 	position:relative;
 	top:-65%;
 	}
-	.mon,.wed,.fri,.sun{
+	.wed,.fri,.sun{
 	width:8%;
 	height:40%;
-	background-color:#5d5f63;	
+	color: white;
+	text-align: center;
+	background-color:#333131;
 	position:relative;
 	display:block;
 	margin:0px;
@@ -88,7 +103,9 @@
 	.tue,.thur,.sat{
 	width:8%;
 	height:40%;
-	background-color:#333131;	
+	color: white;
+	text-align: center;
+	background-color:#5d5f63;	
 	position:relative;
 	display:block;
 	margin:0%;
@@ -113,18 +130,58 @@
 <div class="section2">
 </div>
 
-<div class="data" style="width: 600px">
-<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:2px;float:right">
+<div class="data"  >
+	<input type="text" name="text" id="input" style="font-size:90%;background-color:#383434;border-color:#383434;outline:none;height: 40px;width:88%;border-radius: 20px;position: relative;top:-10%;margin-left: 5px">
+<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:7px;float:right;outline: none" onclick="function1()">
 </div>
-<div class="data1">
+<!--<div class="data1">
+	
+</div>-->
+<div class="mon" style="margin-left:13%; top:-65%">
+	<p id="date0"></p><br/>
+	<p id="day0"></p><br/>
+	<p id="city"></p>
+	<img class="iconi0" ><br/><br/>
+	<p id="tmp0"></p>
+	<p id="weather"></p>
+	
 </div>
-<div class="mon" style="margin-left:30%; top:-105%"></div>
-<div class="tue" style="margin-left:38%; top:-145%"></div>
-<div class="wed" style="margin-left:46%;top:-185%"></div>
-<div class="thur" style="margin-left:54%;top:-225%"></div>
-<div class="fri" style="margin-left:62%; top:-265%"></div>
-<div class="sat" style="margin-left:70%; top:-305%"></div>
-<div class="sun" style="margin-left:78%; top:-345%; border-bottom-right-radius:20px;border-top-right-radius: 20px;"></div>
+<div class="tue" style="margin-left:38%; top:-105%">
+	<p id="date1"></p><br/>
+	<p id="day1"></p><br/>
+	<img class="iconi1" ><br/><br/>
+	<p id="tmp1"></p>
+</div>
+<div class="wed" style="margin-left:46%;top:-145%">
+	<p id="date2"></p><br/>
+	<p id="day2"></p><br/>
+	<img class="iconi2" ><br/><br/>
+	<p id="tmp2"></p>
+</div>
+<div class="thur" style="margin-left:54%;top:-185%">
+	<p id="date3"></p><br/>
+	<p id="day3"></p><br/>
+	<img class="iconi3" ><br/><br/>
+	<p id="tmp3"></p>
+</div>
+<div class="fri" style="margin-left:62%; top:-225%">
+	<p id="date4"></p><br/>
+	<p id="day4"></p><br/>
+	<img class="iconi4" ><br/><br/>
+	<p id="tmp4"></p>
+</div>
+<div class="sat" style="margin-left:70%; top:-265%">
+	<p id="date5"></p><br/>
+	<p id="day5"></p><br/>
+	<img class="iconi5" ><br/><br/>
+	<p id="tmp5"></p>
+</div>
+<div class="sun" style="margin-left:78%; top:-305%; border-bottom-right-radius:20px;border-top-right-radius: 20px;">
+	<p id="date6"></p><br/>
+	<p id="day6"></p><br/>
+	<img class="iconi6" ><br/><br/>
+	<p id="tmp6"></p>
+</div>
 
 <!--Login-->
 <div id="id01" class="modal">
