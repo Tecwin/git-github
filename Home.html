@@ -11,51 +11,16 @@
   crossorigin="anonymous"></script>
 		<script src="script.js"></script>
 <link rel="stylesheet" type="text/css" href="form.css">
+<link rel="stylesheet" type="text/css" href="navbar.css">
 <style>
-	html {
-    height: 100vh;
-    
-}    
 
-     body{
-     	font-family: sans-serif;
-     	font-size: 120%;
-     }
 
-	*{
-	padding:0px;
-	margin:0px;	
-	}
-
-	div.topnav{
-		   background-color:#46484a;
-		   overflow:hidden;
-		   height:50px;
-		   position: fixed;
-		   width: 100%;
-		   z-index: 2;
-	
-	
-	}
-	
-	div.topnav a{
-		color:#ffffff;
-		float:right;
-		display: block;
-		text-align:center;
-		text-decoration:none;
-		padding:15px;
-		padding-right:30px;
- 		border-radius:30px;
-	}
-	.topnav a:hover{
-		background-color:#000000;
-		color:white;	
-	}
 	.section1{
 	width:100%;
-	height:50%;
-	background-image:url(section1-background.jpeg);
+	height:50%; 
+	position: relative;
+	top:8%;
+	//background-image:url(section1-background.jpeg);
 	background-size:100% 100%;
 	}
 	.section2{
@@ -118,32 +83,39 @@
 </head>
 <body>
 <div class="topnav">
-	<a href="#">Contact</a>
+	<a href="about.html">About</a>
+	<a href="report.html">Report</a>
 	<a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</a>
 	<a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SignUp</a>
-	<a href="#">Photos</a>
-	<a href="#">News</a>
-	<a href="#">Home</a>	
+	<a href="maps.html">Maps</a>
+	<a href="#" class="active">Home</a>	
 </div>
-<div class="section1">
+<div class="section1" >
+  <img class="mySlides" src="img1.jpg" style="width:100%;height: 100%">
+  <img class="mySlides" src="img2.jpg" style="width:100%;height: 100%">
+  <img class="mySlides" src="img3.jpg" style="width:100%;height: 100%">
+  <img class="mySlides" src="img4.jpg" style="width:100%;height: 100%">
+  <img class="mySlides" src="img5.jpg" style="width:100%;height: 100%">
+
 </div>
 <div class="section2">
 </div>
 
 <div class="data"  >
-	<input type="text" name="text" id="input" style="font-size:90%;background-color:#383434;border-color:#383434;outline:none;height: 40px;width:88%;border-radius: 20px;position: relative;top:-10%;margin-left: 5px">
-<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:7px;float:right;outline: none" onclick="function1()">
+	<input type="text" name="text" id="input" style="font-size:90%;background-color:#383434;border-color:#383434;outline:none;height: 10%;width:88%;border-radius: 20px;position: relative;margin-top:20px;top:-15%;margin-left: 5px;color: white">
+<input type="button" value="Find" style="position: relative; right: 10;border-radius:15px;padding-right:10px;padding-left:10px;background-color:#009cff;margin:7px;float:right;outline: none;" onclick="function1()">
 </div>
 <!--<div class="data1">
 	
 </div>-->
 <div class="mon" style="margin-left:13%; top:-65%">
-	<p id="date0"></p><br/>
+	<a href="more.html" style="color: white;text-decoration: none"><p id="date0"></p><br/>
 	<p id="day0"></p><br/>
 	<p id="city"></p>
 	<img class="iconi0" ><br/><br/>
 	<p id="tmp0"></p>
-	<p id="weather"></p>
+	<p id="weather"></p></a>
+
 	
 </div>
 <div class="tue" style="margin-left:38%; top:-105%">
@@ -186,7 +158,7 @@
 <!--Login-->
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" >
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="avataar.png" alt="Avatar" class="avatar" style="height: 40%; width: 25%;">
@@ -215,7 +187,7 @@
 <!--Sign up-->
 <div id="id02" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate"  action="" onsubmit="validatefn()">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
       <img src="avataar.png" alt="Avatar" class="avatar" style="height: 40%; width: 25%;">
@@ -226,10 +198,10 @@
       <input type="text" placeholder="Enter Username" name="uname" required>
 
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input  id="psw1" type="password" placeholder="Enter Password" name="psw" required>
 
        <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Re-Enter Password" name="psw" required>
+      <input id="psw2" type="password" placeholder="Re-Enter Password" name="psw" required>
         
       <button type="submit">SignUp</button>
       <label>
@@ -245,16 +217,21 @@
 </div>
 
 </body>
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-var modal = document.getElementById('id02');
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+</html> 
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 3000); // Change image every 2 seconds
 }
 </script>
-</html>
