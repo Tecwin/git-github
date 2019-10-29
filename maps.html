@@ -21,22 +21,45 @@
       width: 100%;
       height: 100%;
     }
+    *{
+      margin:0;
+      padding: 0;
+    }
+
+    #map{
+      width:100%;
+      height: 100%;
+      position: relative;
+      top:8%;
+    }
 	</style>
 </head>
 <body>
 <div class="topnav">
 	<a href="about.html">About</a>
-  <a href="report.html">Report</a>
+  <a href="report.php">Report</a>
 	<a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</a>
 	<a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SignUp</a>
-	<a href="maps.html" class="active">Maps</a>
-
-	<a href="Home.html">Home</a>	
+	<a href="news.html">News</a>
+  <a href="maps.html" class="active">Maps</a>
+  
+	<a href="index.php">Home</a>	
 </div>
-<div class="section1">
+<!--<div class="section1">
   <img src="img6.jpg" style="height: 100%;width: 100%;">
 </div>
+-->
+<div id=map>
+  <iframe
+  width=100%
+  height=100%
+  frameborder="0" style="border:0"
+   src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBT0GNAuISxMJmMGSbXz-M5mwa9gzqsswg
+    &q=India" allowfullscreen>
+</iframe>
+<!--<iframe src="https://weather.com/en-IN/india/news" width="100%" height="4000" frameborder="0" scrolling="yes" style="position: relative;top:10%;"></iframe>-->
 
+  </div>
 
 <!--Login-->
 <div id="id01" class="modal">
@@ -100,5 +123,24 @@
 </div>
 
 </div>
+
+<!--
+  <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: -25.344, lng: 131.036};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 4, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBT0GNAuISxMJmMGSbXz-M5mwa9gzqsswg&callback=initMap">
+    </script>
+-->
 </body>
 </html>
+

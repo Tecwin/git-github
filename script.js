@@ -1,27 +1,34 @@
 var day;
 function function1(){
-
+console.log("hi");
 var city=document.getElementById('input').value;
 
-$.getJSON("http://api-cdn.apixu.com/v1/forecast.json?key=79404562edf343e79ea172616190109&q="+city+"&days=7",function(data)
+$.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=bb7509bc2f75753301f4c4bd363de381",function(data)
 {
 console.log(data);
 
 //day0
-var iconi="http:"+data.current.condition.icon;
-var wea=data.current.condition.text;
-var tmp=data.current.temp_c;
-var date0=data.forecast.forecastday[0].date;
+
+var iconi="http:openweathermap.org/img/w/"+data.weather[0].icon+".png";
+
+var wea=data.weather[0].description;
+var tmp=data.main.temp;
+tmp=tmp-273.15;
+tmp=Math.round(tmp);
+var hum=data.main.humidity;
+var spd=data.wind.speed;
+//var date0=data.forecast.forecastday[0].date;
 $(".iconi0").attr("src",iconi);
-document.getElementById('date0').innerHTML=date0;
+document.getElementById('hum').innerHTML="humidity : "+hum;
 document.getElementById('city').innerHTML=city;
-document.getElementById('weather').innerHTML=wea;
+document.getElementById('weather').innerHTML="Description : "+wea;
 document.getElementById('tmp0').innerHTML=tmp+"<sup>o</sup>C";
-var d=new Date(date0);
- day=d.getDay();
-myDate(day);
-document.getElementById('day0').innerHTML=day;
+//var d=new Date(date0);
+ //day=d.getDay();
+//myDate(day);
+document.getElementById('spd').innerHTML="Wind Speed : "+spd;
 //day1
+/*
 var iconi1="http:"+data.forecast.forecastday[1].day.condition.icon;
 var date1=data.forecast.forecastday[1].date;
 var tmp=data.forecast.forecastday[1].day.avgtemp_c;
@@ -86,9 +93,9 @@ document.getElementById('tmp6').innerHTML=tmp+"<sup>o</sup>C";
 var d=new Date(date6);
  day=d.getDay();
 myDate(day);
-document.getElementById('day6').innerHTML=day;
+document.getElementById('day6').innerHTML=day;*/
 });}
-  function myDate(dayt) {
+ /* function myDate(dayt) {
        if(dayt=="0")
        	day="Sunday";
        else if(dayt=="1")
@@ -105,4 +112,4 @@ document.getElementById('day6').innerHTML=day;
        	day="Saturday";
 
        console.log(day);
-    }
+    }*/

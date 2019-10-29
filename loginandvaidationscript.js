@@ -1,6 +1,6 @@
-<script>
+
 // Get the modal
-var modal = document.getElementById('id01');
+console.log("aa");
 var modal = document.getElementById('id02');
 
 // When the user clicks anywhere outside of the modal, close it
@@ -17,5 +17,3 @@ if(p!=q)
 }
 }
 
-
-</script>

@@ -7,38 +7,100 @@
 	<link rel="stylesheet" type="text/css" href="navbar.css">
 	<style type="text/css">
 		body{
+      margin:0px;
+      padding: 0px;
 			background-color: black;
+      //background-image: url("img7.jpg");
 		}
 		.section{
 			
 			color: white;
 			position: relative;
-			bottom:-20%;
+			bottom:-50%;
 		}
+    .section1{
+      position:relative;
+      top:8%;
+      width: 100%;
+      height: 100%;
+    }
+    .table{
+      position: relative;
+      background-color:rgba(179, 217, 255,0.3);
+      top:-20%;
+      width:30%;
+      z-index: 3;
+      border-spacing: 10px;
+      margin-left: 35%;
+      margin-top: -20%;
+    }
+    .table,td,th{
+      border:2px solid black;
+      padding:0px;
+
+    }
 	</style>
 </head>
 <body>
 <div class="topnav">
-	<a href="about.html" class="active">About</a>
-	<a href="report.php">Report</a>
+	<a href="about.html">About</a>
+  <a href="report.php" class="active">Report</a>
 	<a href="#" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">login</a>
 	<a href="#" onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SignUp</a>
 	<a href="news.html">News</a>
-  <a href="maps.html">Maps</a>
-  
-	<a href="index.php">Home</a>	
+  <a href="maps.html" >Maps</a>
+
+	<a href="index.php ">Home</a>	
 </div>
-<div class="section">
-	<p> This global website presents OFFICIAL weather observations, weather forecasts as per recieved from API.Weather icons are shown alongside worded forecasts  to facilitate visual inspection.</p>
-	<br/>
-	<p>Objectives</p><br/>
-	<pre>
-	To provide a centralized source of official weather information on the Internet
-	Make weather data easily available
-	
-	</pre>
+<div class="section1">
+  <img src="img7.jpg" style="height: 100%;width: 100%;">
+</div>
+ <?php
+
+ ?>
+
+
+<div class="table">
+    <table style="width:100%;text-align: center;">
+    <tr>
+    <th>Name</th>
+    <th>Location Searched</th>
+    <th>Date</th>
+    <th>Time</th>
+    </tr>
+  
+</div>
+<?php
+session_start();
+$conn=mysqli_connect("localhost","root","","weather");
+if(isset($_SESSION["username"]))
+{
+$query="select * from searchinfo where userid='{$_SESSION['username']}'";
+//echo $query;
+$result=mysqli_query($conn,$query);
+//echo $result ;
+  while($rows=mysqli_fetch_assoc($result))
+  {
+    $txt="<tr>
+    
+    <td> ".$rows["userid"]."</td>
+    <td> ".$rows['locat']."</td>
+    <td>".$rows['date']."</td>
+    <td><". $rows['searchat']."</td>
+    </tr>";
+    echo $txt;
+
+
+  }
+}
+else{
+  echo "login please";
+}
+?>
+</table>
 
 </div>
+
 <!--Login-->
 <div id="id01" class="modal">
   
